@@ -9,7 +9,7 @@ void bookSearchByName(string);
 void bookSearchByAuthor(string);
 void sortBooksbyName(void);
 
-typedef struct books // Defining the struture named books and its attributes
+typedef struct books // Declaring the struture and its attributes
 {
     string bookName;
     string bookAuthor;
@@ -17,13 +17,13 @@ typedef struct books // Defining the struture named books and its attributes
     int bookCopies;
 } bk;
 bk books[3]; // 3 is the max no. of books
-int i = 0;
+int i = 0; // i, a global variable to count no. of books in library.
 
-void bookDetails()
+void bookDetails() 
 {
     if (i < 3)
     {
-        cin.ignore();
+        cin.ignore(); // to ignore the buffers
         cout << "<<<<<---Enter the Book " << i + 1 << " details--->>>>>" << endl
              << endl;
         cout << "Enter the book's name: ";
@@ -80,7 +80,7 @@ void bookSearchByAuthor(string bauthor)
     {
         if (bauthor == books[x].bookAuthor)
         {
-            cout << books[x].bookName << " ==> " << books[x].bookCopies << " copies" << endl
+            cout << books[x].bookName << " ==> " << books[x].bookCopies << " copies available" << endl
                  << endl;
         }
     }
@@ -121,7 +121,7 @@ int main()
              << "Press 5: Sort the books by name and display" << endl
              << "Press 0: Exit" << endl;
         cin >> f;
-        switch (f)
+        switch (f) //menu driven
         {
         case 0:
             break;
