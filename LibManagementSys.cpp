@@ -10,21 +10,21 @@ void bookSearchByName(string);
 void bookSearchByAuthor(string);
 void sortBooksbyName(void);
 
-typedef struct booksLib // Defining the struture named books and its attributes
+typedef struct booksLib //struture and its attributes
 {
     string bookName;
     string bookAuthor;
     float bookPrice;
     int bookCopies;
 } bk;
-bk books[3]; // 3 is the max no. of books
+bk books[3]; // 3 is the max no. of books. Every "3" refers to max. no of books
 int i = 0;
 
-void bookDetails()
+void bookDetails() //stores book details
 {
     if (i < 3)
     {
-        cin.ignore();
+        cin.ignore(); // to remove the buffer
         cout << "<<<<<---Enter the Book " << i + 1 << " details--->>>>>" << endl
              << endl;
         cout << "Enter the book's name: ";
@@ -59,7 +59,7 @@ void printBookDetails()
 }
 void bookSearchByName(string bname)
 {
-    int c = 0;
+    int c = 0; 
     for (int x = 0; x < 3; x++)
     {
         if (bname == books[x].bookName)
@@ -87,14 +87,13 @@ void bookSearchByAuthor(string bauthor)
 }
 void sortBooksByName()
 {
-    bk temp;
-    for (int x = 0; x < 3 - 1; x++)
+    for (int x = 0; x < 3 - 1; x++) // in bubble sort, total no. of passes  =  n - 1, where n is the size of array
     {
-        for (int j = 0; j < 3 - x - 1; j++)
+        for (int j = 0; j < 3 - x - 1; j++) // it refers to the positions where swapping takes place.
         {
             if (books[j].bookName > books[j + 1].bookName) // bubble sort
             {
-                swap(books[j], books[j + 1]);
+                swap(books[j], books[j + 1]); // swap function to swap the array of structures
             }
         }
     }
@@ -103,7 +102,7 @@ void sortBooksByName()
 }
 int main()
 {
-    int f = 9;
+    int f = 9; 
     string bookssName, authorname;
     cout << "<<<<<<<<<<<<<<<----------------------Welcome to the Library !!!---------------------->>>>>>>>>>>>>>>" << endl
          << endl;
