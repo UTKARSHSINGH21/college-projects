@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 void bookDetails(void); // Function Declaration
@@ -9,7 +10,7 @@ void bookSearchByName(string);
 void bookSearchByAuthor(string);
 void sortBooksbyName(void);
 
-typedef struct books // Declaring the struture and its attributes
+typedef struct booksLib // Defining the struture named books and its attributes
 {
     string bookName;
     string bookAuthor;
@@ -17,13 +18,13 @@ typedef struct books // Declaring the struture and its attributes
     int bookCopies;
 } bk;
 bk books[3]; // 3 is the max no. of books
-int i = 0; // i, a global variable to count no. of books in library.
+int i = 0;
 
-void bookDetails() 
+void bookDetails()
 {
     if (i < 3)
     {
-        cin.ignore(); // to ignore the buffers
+        cin.ignore();
         cout << "<<<<<---Enter the Book " << i + 1 << " details--->>>>>" << endl
              << endl;
         cout << "Enter the book's name: ";
@@ -80,30 +81,26 @@ void bookSearchByAuthor(string bauthor)
     {
         if (bauthor == books[x].bookAuthor)
         {
-            cout << books[x].bookName << " ==> " << books[x].bookCopies << " copies available" << endl
-                 << endl;
+            cout << books[x].bookName << " ==> " << books[x].bookCopies << " copies" << endl;
         }
     }
 }
 void sortBooksByName()
 {
-    for (int y = 0; y < i; y++)
+    bk temp;
+    for (int x = 0; x < 3 - 1; x++)
     {
-        string temp;
-        if (books[y].bookName > books[y + 1].bookName)
+        for (int j = 0; j < 3 - x - 1; j++)
         {
-            temp = books[y].bookName;
-            books[y].bookName = books[y + 1].bookName;
-            books[y + 1].bookName = temp;
+            if (books[j].bookName > books[j + 1].bookName) // bubble sort
+            {
+                swap(books[j], books[j + 1]);
+            }
         }
     }
     cout << "List after sorting is: " << endl;
-    for (int z = 0; z < i; z++)
-    {
-        cout << books[z].bookName << endl;
-    }
+    printBookDetails();
 }
-
 int main()
 {
     int f = 9;
@@ -121,7 +118,7 @@ int main()
              << "Press 5: Sort the books by name and display" << endl
              << "Press 0: Exit" << endl;
         cin >> f;
-        switch (f) //menu driven
+        switch (f)
         {
         case 0:
             break;
@@ -151,5 +148,4 @@ int main()
             cout << "Enter a valid operation!";
         }
     }
-    getchar();
 }
