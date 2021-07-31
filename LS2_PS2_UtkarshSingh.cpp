@@ -9,7 +9,7 @@ float volume(float l) // vol of cube
 }
 double volume(double r) // volume of sphere
 {
-    double v = ((double)4 / 3 * 22 / 7 * r * r * r);
+    double v = ((double)4 / 3 * (double)22 / 7 * r * r * r);
     return v;
 }
 double volume(double r, float h) // volume of cylinder
